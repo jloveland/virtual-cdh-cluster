@@ -1,0 +1,8 @@
+{
+  "items": [
+    {
+      "name": "REMOTE_PARCEL_REPO_URLS",
+      "value": "http://nasa-orion-1/repos/cdh5/parcels/latest/,http://nasa-orion-1/repos/impala/parcels/latest,http://nasa-orion-1/repos/search/parcels/latest,http://nasa-orion-1/repos/spark/parcels/latest,http://nasa-orion-1/repos/navigator-keytrustee5/parcels/latest,http://nasa-orion-1/repos/sqoop-connectors/parcels/latest,http://nasa-orion-1/repos/accumulo-c5/parcels/latest"
+    }
+  ]
+}

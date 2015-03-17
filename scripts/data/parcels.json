@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "name": "DISTRIBUTE_PARCELS_AUTOMATICALLY",
+      "value": "true"
+    },
+    {
+      "name": "DOWNLOAD_PARCELS_AUTOMATICALLY",
+      "value": "true"
+    },
+    {
+      "name": "PARCEL_AUTODOWNLOAD_PRODUCTS",
+      "value": "CDH,IMPALA,SOLR,SPARK,NAVIGATOR,SQOOP_NETEZZA,SQOOP_TERADATA,KEYTRUSTEE,ACCUMULO"
+    },
+    {
+      "name": "PARCEL_CLEANUP_AUTOMATICALLY",
+      "value": "true"
+    },
+    {
+      "name": "PARCEL_CLEANUP_THRESHOLD",
+      "value": "0"
+    },
+    {
+      "name": "REMOTE_PARCEL_REPO_URLS",
+      "value": "http://archive.cloudera.com/cdh5/parcels/latest/,http://archive.cloudera.com/impala/parcels/latest/,http://archive.cloudera.com/search/parcels/latest/,http://archive.cloudera.com/spark/parcels/latest/,http://archive.cloudera.com/navigator-keytrustee5/parcels/latest/,http://archive.cloudera.com/sqoop-connectors/parcels/latest/,http://archive.cloudera.com/accumulo-c5/parcels/latest/"
+    },
+    {
+      "name": "RETAIN_PARCELS_IN_CACHE",
+      "value": "false"
+    }
+  ]
+}

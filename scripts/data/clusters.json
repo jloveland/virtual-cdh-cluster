@@ -1,0 +1,10 @@
+{
+  "items": [
+    {
+      "name": "mars-development",
+      "displayName": "mars-development",
+      "version": "CDH5",
+      "fullVersion": "5.3.2"
+    }
+  ]
+}

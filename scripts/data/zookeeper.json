@@ -1,0 +1,102 @@
+{
+  "items": [
+    {
+      "name": "zookeeper1",
+      "type": "ZOOKEEPER",
+      "config": {
+        "items": [
+          {
+            "name": "autopurgeInterval",
+            "value": "12"
+          }
+        ]
+      },
+      "roles": [
+        {
+          "type": "SERVER",
+          "hostRef": {
+            "hostId": "nasa-orion-2"
+          },
+          "config": {
+            "items": [
+              {
+                "name": "serverId",
+                "value": "1"
+              }
+            ]
+          },
+          "roleConfigGroupRef": {
+            "roleConfigGroupName": "zookeeper1-SERVER-BASE"
+          }
+        },
+        {
+          "type": "SERVER",
+          "hostRef": {
+            "hostId": "nasa-orion-3"
+          },
+          "config": {
+            "items": [
+              {
+                "name": "serverId",
+                "value": "2"
+              }
+            ]
+          },
+          "roleConfigGroupRef": {
+            "roleConfigGroupName": "zookeeper1-SERVER-BASE"
+          }
+        },
+        {
+          "type": "SERVER",
+          "hostRef": {
+            "hostId": "nasa-orion-4"
+          },
+          "config": {
+            "items": [
+              {
+                "name": "serverId",
+                "value": "3"
+              }
+            ]
+          },
+          "roleConfigGroupRef": {
+            "roleConfigGroupName": "zookeeper1-SERVER-BASE"
+          }
+        }
+      ],
+      "displayName": "zookeeper1",
+      "roleConfigGroups": [
+        {
+          "name": "zookeeper1-SERVER-BASE",
+          "displayName": "ServerDefaultGroup",
+          "roleType": "SERVER",
+          "base": true,
+          "serviceRef": {
+            "clusterName": "mars-development",
+            "serviceName": "zookeeper1"
+          },
+          "config": {
+            "items": [
+              {
+                "name": "clientPort",
+                "value": "2181"
+              },
+              {
+                "name": "dataDir",
+                "value": "/var/zookeeper/snapshots"
+              },
+              {
+                "name": "dataLogDir",
+                "value": "/var/zookeeper/txLogs"
+              },
+              {
+                "name": "maxSessionTimeout",
+                "value": "60000"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

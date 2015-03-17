@@ -1,0 +1,11 @@
+{
+  "hostNames": [
+    "nasa-orion-2",
+    "nasa-orion-3",
+    "nasa-orion-4"
+  ],
+  "userName": "vagrant",
+  "password": "vagrant",
+  "javaInstallStrategy": "AUTO",
+  "unlimitedJCE": false
+}

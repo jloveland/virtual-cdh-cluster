@@ -1,0 +1,13 @@
+{
+  "hostNames": [
+    "nasa-orion-2",
+    "nasa-orion-3",
+    "nasa-orion-4"
+  ],
+  "userName": "vagrant",
+  "password": "vagrant",
+  "javaInstallStrategy": "AUTO",
+  "cmRepoUrl": "http://archive.cloudera.com/cm5/redhat/6/x86_64/cm/5/",
+  "gpgKeyCustomUrl": "http://archive.cloudera.com/cm5/redhat/6/x86_64/cm/RPM-GPG-KEY-cloudera",
+  "unlimitedJCE": false
+}

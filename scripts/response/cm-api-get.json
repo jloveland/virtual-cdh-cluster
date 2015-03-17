@@ -1,0 +1,39 @@
+{
+  "items" : [ {
+    "hostId" : "c017b737-58af-41d8-b234-573ac0001ae0",
+    "ipAddress" : "10.211.55.101",
+    "hostname" : "nasa-orion-2",
+    "rackId" : "/default",
+    "hostUrl" : "http://nasa-orion-1:7180/cmf/hostRedirect/c017b737-58af-41d8-b234-573ac0001ae0",
+    "maintenanceMode" : false,
+    "maintenanceOwners" : [ ],
+    "commissionState" : "COMMISSIONED",
+    "numCores" : 1,
+    "numPhysicalCores" : 1,
+    "totalPhysMemBytes" : 1044832256
+  }, {
+    "hostId" : "e5673776-f862-4ae1-9cb7-0978b713dea7",
+    "ipAddress" : "10.211.55.102",
+    "hostname" : "nasa-orion-3",
+    "rackId" : "/default",
+    "hostUrl" : "http://nasa-orion-1:7180/cmf/hostRedirect/e5673776-f862-4ae1-9cb7-0978b713dea7",
+    "maintenanceMode" : false,
+    "maintenanceOwners" : [ ],
+    "commissionState" : "COMMISSIONED",
+    "numCores" : 1,
+    "numPhysicalCores" : 1,
+    "totalPhysMemBytes" : 1044832256
+  }, {
+    "hostId" : "198c982e-82bd-4834-86c4-3d9020793f64",
+    "ipAddress" : "10.211.55.103",
+    "hostname" : "nasa-orion-4",
+    "rackId" : "/default",
+    "hostUrl" : "http://nasa-orion-1:7180/cmf/hostRedirect/198c982e-82bd-4834-86c4-3d9020793f64",
+    "maintenanceMode" : false,
+    "maintenanceOwners" : [ ],
+    "commissionState" : "COMMISSIONED",
+    "numCores" : 1,
+    "numPhysicalCores" : 1,
+    "totalPhysMemBytes" : 1044832256
+  } ]
+}
