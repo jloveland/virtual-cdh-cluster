@@ -4,9 +4,11 @@ source /vagrant/scripts/cdh-parcels-functions.sh
 source /vagrant/scripts/cdh-local-parcels-functions.sh
 
 if [[ $CM_USE_PARCELS == true ]]; then
+  # using parcels and updating cloudera manager configuration
   update_parcels_config
 
-  if [[ $CM_LOCAL_PARCEL_REPO == true ]]; then
+  if [[ $CM_LOCAL_PARCELS_REPO == true ]]; then
+    # using local parcels and updating cloudera manager configuration
     add_local_parcels_config
   fi
 

@@ -3,7 +3,7 @@ source /vagrant/scripts/cm-api.sh
 source /vagrant/scripts/cdh-parcels-functions.sh
 source /vagrant/scripts/cdh-local-parcels-functions.sh
 
-if [[ $CM_USE_PARCELS == true && $CM_LOCAL_PARCELS_REPO == true ]]; then
+if [[ $CM_USE_PARCELS = true && $CM_LOCAL_PARCELS_REPO = true ]]; then
 echo "Downloading parcels from cloudera to local parcel repo..this could take a while.."
 add_local_parcels_config
 

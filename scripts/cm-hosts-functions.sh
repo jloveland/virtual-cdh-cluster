@@ -31,8 +31,8 @@ all_hosts_provisioned () {
   # TODO: this will not work is there's more hosts in the manager than whats in your config
   diff=$(diff <(printf "%s\n" "${configHostsArray[@]}") <(printf "%s\n" "${cmHostsArray[@]}"))
   if [[ -z "$diff" ]]; then
-    all_hosts_provisioned=true
+    hosts_provisioned_done=true
   else
-    all_hosts_provisioned=false
+    hosts_provisioned_done=false
   fi
 }

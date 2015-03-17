@@ -6,7 +6,7 @@ source /vagrant/scripts/cm-hosts-functions.sh
 get_hosts_installing
 # Check if hosts are already provisioned
 all_hosts_provisioned
-if [[ $hosts_installing == false || all_hosts_provisioned == false ]]; then
+if [[ $hosts_installing = false && $hosts_provisioned_done = false ]]; then
   echo "Adding the nodes to the cluster using the Cloudera Manager."
   data=$(jq . /vagrant/scripts/data/cm-hosts.json -c)
   cm_api_post "/cm/commands/hostInstall" $data
