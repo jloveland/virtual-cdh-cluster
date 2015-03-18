@@ -3,42 +3,32 @@ source /vagrant/scripts/cm-api.sh
 source /vagrant/scripts/cdh-parcels-functions.sh
 source /vagrant/scripts/cdh-local-parcels-functions.sh
 
-if [[ $CM_USE_PARCELS == true ]]; then
+if [[ $CM_USE_PARCELS = true ]]; then
   # using parcels and updating cloudera manager configuration
   update_parcels_config
 
-  if [[ $CM_LOCAL_PARCELS_REPO == true ]]; then
+  if [[ $CM_LOCAL_PARCELS_REPO = true ]]; then
     # using local parcels and updating cloudera manager configuration
     add_local_parcels_config
   fi
 
   # check for cluster to be available
   cm_get_cluster_name
-  echo "Cluster name in cdh-parcels $CLUSTER_NAME"
-  if [[ "$CLUSTER_NAME" == "mars-development" ]]; then
-    echo "Successfully in cdh-parcels $CLUSTER_NAME"
-    # echo 'Getting Parcel List for mars-development cluster'
-    # cm_api_get "/clusters/mars-development/parcels"
-    # response=$(jq . /vagrant/scripts/response/cm-api-get.json -c)
-    # # parcels_json=$(echo $response | jq -r '[.items[] | select(.stage | contains("AVAILABLE_REMOTELY")) | del(.clusterRef)]')
-    # parcels_json=$(echo $response | jq -r '[.items[] | del(.clusterRef)]')
-    #
-    # declare -A myarray
-    # while IFS="=" read -r key value
-    # do
-    #   myarray[$key]="$value"
-    # done < <(echo $parcels_json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]")
+  if [[ $CM_CLUSTER_NAME = $CLUSTER_NAME ]]; then
+    # get the list of parcels
     get_parcels_array
-    for key in "${!myarray[@]}"
+
+    for p in "${!parcelsarray[@]}"
     do
-      product=$(echo ${myarray[$key]} | jq -r '.product')
-      version=$(echo ${myarray[$key]} | jq -r '.version')
-      stage=$(echo ${myarray[$key]} | jq -r '.stage')
+      product=$(echo ${parcelsarray[$p]} | jq -r '.product')
+      version=$(echo ${parcelsarray[$p]} | jq -r '.version')
+      stage=$(echo ${parcelsarray[$p]} | jq -r '.stage')
+
       if [[ $stage == "AVAILABLE_REMOTELY" ]]; then
         echo "Downloading $product version $version..this could take a while.."
         echo "Please re-provision once parcels are downloaded."
         data="{}"
-        cm_api_post "clusters/mars-development/parcels/products/$product/versions/$version/commands/startDownload" $data
+        cm_api_post "/clusters/mars-development/parcels/products/$product/versions/$version/commands/startDownload" $data
       fi
 
       if [[ $stage == "DOWNLOADING" ]]; then
@@ -49,7 +39,7 @@ if [[ $CM_USE_PARCELS == true ]]; then
         echo "Downloaded $product version $version successfully.."
         echo 'Distributing Parcels for $product version $version..this could take a while..'
         data="{}"
-        cm_api_post "clusters/mars-development/parcels/products/$product/versions/$version/commands/startDistribution" $data
+        cm_api_post "/clusters/mars-development/parcels/products/$product/versions/$version/commands/startDistribution" $data
       fi
 
       if [[ $stage == "DISTRIBUTING" ]]; then
@@ -60,7 +50,7 @@ if [[ $CM_USE_PARCELS == true ]]; then
         echo "Distributed $product version $version successfully.."
         echo 'Activating Parcels for $product version $version..this could take a while..'
         data="{}"
-        cm_api_post "clusters/mars-development/parcels/products/$product/versions/$version/commands/startActivation" $data
+        cm_api_post "/clusters/mars-development/parcels/products/$product/versions/$version/commands/startActivation" $data
       fi
 
       if [[ $stage == "ACTIVATING" ]]; then
@@ -76,8 +66,9 @@ if [[ $CM_USE_PARCELS == true ]]; then
       fi
 
     done
+
   else
-    echo "cluster not ready yet, please provision again"
-fi
+    echo "Cluster is not ready yet, please provision again"
+  fi
 
 fi

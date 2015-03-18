@@ -37,6 +37,9 @@ CM_BASE_URL="$HTTP_PROTOCOL$CM_HOST:$CM_PORT/api/v$CM_API_VERSION"
 
 CM_USE_PARCELS=true
 
+# TODO: use this to populate data/parcels.json
+# CM_PARCELS="CDH,IMPALA,SOLR,SPARK,NAVIGATOR,SQOOP_NETEZZA,SQOOP_TERADATA,KEYTRUSTEE,ACCUMULO"
+
 CM_LOCAL_PARCELS_REPO=false
 
 cm_api_get() {
@@ -54,6 +57,6 @@ cm_api_put() {
 
 cm_get_cluster_name() {
   cm_api_get "/clusters"
-  CLUSTER_NAME=$(jq . /vagrant/scripts/response/cm-api-get.json -c | jq -r ".items[0].name")
-  echo "Cluster Name: $CLUSTER_NAME"
+  CM_CLUSTER_NAME=$(jq . /vagrant/scripts/response/cm-api-get.json -c | jq -r ".items[0].name")
+  echo "Cluster Name: $CM_CLUSTER_NAME"
 }

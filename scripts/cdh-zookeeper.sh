@@ -1,8 +1,8 @@
 #!/bin/bash
 source /vagrant/scripts/cm-api.sh
 
-setup_zk () {
-  echo " Setting up zookeeper."
+add_zk () {
+  echo " Adding zookeeper."
   data=$(jq . /vagrant/scripts/data/zookeeper.json -c)
   cm_api_post "/clusters/mars-development/services" $data
 }
@@ -44,17 +44,17 @@ cleanup_zk () {
 }
 
 if [[ $CM_USE_PARCELS == false ]]; then
-  echo " Installing zookeeper rpm packages."
+  echo " Installing zookeeper rpm packages..."
   # install zookeeper packages
   yum install -y zookeeper-server
 fi
 
 # check for cluster to be available
 cm_get_cluster_name
-if [ $CLUSTER_NAME == "\"mars-development\"" ]
-then
-  setup_zk
+if [[ $CM_CLUSTER_NAME = $CLUSTER_NAME ]]; then
+  echo "Adding Zookeeper Service to Cluster: $CLUSTER_NAME..."
+  add_zk
   first_run_zk
 else
-  echo "cluster not ready yet, please provision again"
+  echo "Cluster not ready yet, please provision again."
 fi

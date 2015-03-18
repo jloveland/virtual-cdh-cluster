@@ -30,7 +30,7 @@ mkdir -p $repos_folder/sqoop-connectors/parcels/latest
 mkdir -p $repos_folder/accumulo-c5/parcels/latest
 
 # TODO: make this an array of parcels and interate, get this from the cloudera manager api
-if [[ $CLUSTER_NAME == "mars-development" ]]; then
+if [[ $CM_CLUSTER_NAME = $CLUSTER_NAME ]]; then
   echo "Getting Parcel List for $CLUSTER_NAME cluster"
   get_parcels_array
 
@@ -44,7 +44,7 @@ if [[ $CLUSTER_NAME == "mars-development" ]]; then
   done
 
 
-  declare -A repos=(
+  repos=(
   ["cdh5"]="CDH-5.3.2-1.cdh5.3.2.p0.10-el6.parcel"
   ["impala"]="dog"
   )
@@ -87,9 +87,9 @@ if [[ $CLUSTER_NAME == "mars-development" ]]; then
   # TODO: curl the other parces down
 
   service httpd restart
-  echo "Successully added local parcel repo"
+  echo "Successully added local parcel repo."
 else
-  echo "cluster not ready yet, please provision again"
+  echo "Cluster is not ready yet, please provision again."
 fi
 
 fi

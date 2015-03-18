@@ -6,10 +6,10 @@ get_parcels_array () {
   response=$(jq . /vagrant/scripts/response/cm-api-get.json -c)
   parcels_json=$(echo $response | jq -r '[.items[] | del(.clusterRef)]')
 
-  declare -A myarray
   while IFS="=" read -r key value
   do
-    myarray[$key]="$value"
+    # echo "parcel $key = $value"
+    parcelsarray[$key]="$value"
   done < <(echo $parcels_json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]")
 }
 
