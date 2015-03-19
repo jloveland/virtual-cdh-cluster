@@ -46,7 +46,8 @@ cleanup_zk () {
 if [[ $CM_USE_PARCELS == false ]]; then
   echo " Installing zookeeper rpm packages..."
   # install zookeeper packages
-  yum install -y zookeeper-server
+  install_package "zookeeper-server"
+
 fi
 
 # check for cluster to be available

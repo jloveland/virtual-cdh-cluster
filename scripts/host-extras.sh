@@ -1,7 +1,8 @@
 #!/bin/bash
+source /vagrant/scripts/cm-api.sh
 
-echo "installing jq to parse JSON api response."
-yum install -y jq
+# install jq packages
+install_package "jq"
 
 echo "setting vm.swappiness=0"
 sysctl vm.swappiness=0

@@ -44,7 +44,7 @@ get_config_hdfs () {
 if [[ $CM_USE_PARCELS = false ]]; then
   echo " Installing hdfs rpm packages."
   # install hdfs packages
-  yum install -y hadoop-hdfs
+  install_package "hadoop-hdfs"
 fi
 
 # check for cluster to be available

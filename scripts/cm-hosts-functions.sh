@@ -1,10 +1,11 @@
 #!/bin/bash
+source /vagrant/scripts/cm-api.sh
 
 get_hosts_installing () {
-  cm_api_get "/cm/commands/hostInstall"
+  cm_api_get "/cm/commands"
   response=$(jq . /vagrant/scripts/response/cm-api-get.json -c)
   global_host_install=$(echo $response | jq -r '[.items[] | select(.name | contains("GlobalHostInstall")) | contains({active: true})] | .[]')
-  if [[ global_host_install == true ]]; then
+  if [[ $global_host_install = true ]]; then
     echo "Global Host install actively running. Please wait for hosts to be installed."
     hosts_installing=true
   else

@@ -42,21 +42,38 @@ CM_USE_PARCELS=true
 
 CM_LOCAL_PARCELS_REPO=false
 
-cm_api_get() {
+cm_api_get () {
   curl -s -u "$CM_USER:$CM_PASSWORD" "$CM_BASE_URL$1" --noproxy $CM_HOST > /vagrant/scripts/response/cm-api-get.json
   if [[ $2 == true ]]; then echo /vagrant/scripts/response/cm-api-get.json; fi
 }
 
-cm_api_post() {
+cm_api_post () {
   curl -s -H 'Content-Type: application/json' -u "$CM_USER:$CM_PASSWORD" "$CM_BASE_URL$1" --noproxy $CM_HOST -X POST --data $2
 }
 
-cm_api_put() {
+cm_api_put () {
   curl -s -H 'Content-Type: application/json' -u "$CM_USER:$CM_PASSWORD" "$CM_BASE_URL$1" --noproxy $CM_HOST -X PUT --data $2
 }
 
-cm_get_cluster_name() {
+cm_get_cluster_name () {
   cm_api_get "/clusters"
   CM_CLUSTER_NAME=$(jq . /vagrant/scripts/response/cm-api-get.json -c | jq -r ".items[0].name")
   echo "Cluster Name: $CM_CLUSTER_NAME"
+}
+
+echo_cloudera_manager () {
+  cm_api_get "/tools/echo"
+  response=$(jq . /vagrant/scripts/response/cm-api-get.json -c)
+  CM_ECHO=$(echo $response | jq '.message')
+  echo $CM_ECHO
+}
+
+install_package () {
+  package=$1
+  if rpm -qa | grep -q $package; then
+    echo "$package already installed."
+  else
+    echo "installing $package."
+    yum install -y $package
+  fi
 }
