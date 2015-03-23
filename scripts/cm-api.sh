@@ -36,10 +36,15 @@ fi
 CM_BASE_URL="$HTTP_PROTOCOL$CM_HOST:$CM_PORT/api/v$CM_API_VERSION"
 
 CM_USE_PARCELS=true
-
+CM_PARCELS_NFS=false #TODO: determine if parcels can be installed using NFS
+CM_PARCELS_NFS_SERVER="nasa-orion-1"
+# TODO: get these from clusters definition
+CM_PARCELS_NFS_CLIENTS=("nasa-orion-2" "nasa-orion-3" "nasa-orion-4")
+CM_PARCELS_NFS_SERVER_PATH="/opt/cloudera/parcel-repo"
+CM_PARCELS_NFS_CLIENT_PATH="/opt/cloudera/parcels"
 # TODO: use this to populate data/parcels.json
 # CM_PARCELS="CDH,IMPALA,SOLR,SPARK,NAVIGATOR,SQOOP_NETEZZA,SQOOP_TERADATA,KEYTRUSTEE,ACCUMULO"
-
+# CM_REMOTE_PARCEL_REPO_URLS="http://archive.cloudera.com/cdh5/parcels/latest/,http://archive.cloudera.com/impala/parcels/latest/,http://archive.cloudera.com/search/parcels/latest/,http://archive.cloudera.com/spark/parcels/latest/,http://archive.cloudera.com/navigator-keytrustee5/parcels/latest/,http://archive.cloudera.com/sqoop-connectors/parcels/latest/,http://archive.cloudera.com/accumulo-c5/parcels/latest/"
 CM_LOCAL_PARCELS_REPO=false
 
 cm_api_get () {
@@ -58,14 +63,14 @@ cm_api_put () {
 cm_get_cluster_name () {
   cm_api_get "/clusters"
   CM_CLUSTER_NAME=$(jq . /vagrant/scripts/response/cm-api-get.json -c | jq -r ".items[0].name")
-  echo "Cluster Name: $CM_CLUSTER_NAME"
+  # echo "Cluster Name: $CM_CLUSTER_NAME"
 }
 
 echo_cloudera_manager () {
   cm_api_get "/tools/echo"
   response=$(jq . /vagrant/scripts/response/cm-api-get.json -c)
   CM_ECHO=$(echo $response | jq '.message')
-  echo $CM_ECHO
+  # echo $CM_ECHO
 }
 
 install_package () {

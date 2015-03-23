@@ -13,6 +13,20 @@ get_hosts_installing () {
     hosts_installing=false
   fi
 }
+host_installed () {
+  # Get all hosts from Cloudera Manager
+  host_is_install=false
+  cm_api_get "/hosts"
+  response=$(jq . /vagrant/scripts/response/cm-api-get.json -c)
+  host=$(echo $response | jq -r ".items[] | select(.hostname == \"$1\") | .hostname")
+  if [[ "$host" == "$1" ]]; then
+    echo "Host found: $1"
+    host_is_installed=true
+  else
+    echo "Host not found: $1, rather found: $host"
+    host_is_installed=false
+  fi
+}
 
 all_hosts_provisioned () {
   # Get all hosts from our configuration files

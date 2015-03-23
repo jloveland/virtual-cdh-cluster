@@ -37,7 +37,7 @@ if [[ $CM_USE_PARCELS = true ]]; then
 
       if [[ $stage == "DOWNLOADED" ]]; then
         echo "Downloaded $product version $version successfully.."
-        echo 'Distributing Parcels for $product version $version..this could take a while..'
+        echo "Distributing Parcels for $product version $version..this could take a while.."
         data="{}"
         cm_api_post "/clusters/mars-development/parcels/products/$product/versions/$version/commands/startDistribution" $data
       fi
@@ -46,11 +46,11 @@ if [[ $CM_USE_PARCELS = true ]]; then
         echo "Distributing $product version $version..this could take a while.."
       fi
 
-      if [[ $stage == "DISTIBUTED" ]]; then
+      if [[ $stage == "DISTRIBUTED" ]]; then
         echo "Distributed $product version $version successfully.."
-        echo 'Activating Parcels for $product version $version..this could take a while..'
+        echo "Activating Parcels for $product version $version..this could take a while.."
         data="{}"
-        cm_api_post "/clusters/mars-development/parcels/products/$product/versions/$version/commands/startActivation" $data
+        cm_api_post "/clusters/mars-development/parcels/products/$product/versions/$version/commands/activate" $data
       fi
 
       if [[ $stage == "ACTIVATING" ]]; then

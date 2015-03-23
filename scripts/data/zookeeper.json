@@ -92,6 +92,14 @@
               {
                 "name": "maxSessionTimeout",
                 "value": "60000"
+              },
+              {
+                "name": "max_log_backup_index",
+                "value": "1"
+              },
+              {
+                "name": "zookeeper_server_java_heapsize",
+                "value": "134217728"
               }
             ]
           }

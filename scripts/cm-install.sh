@@ -1,5 +1,7 @@
 #!/bin/bash
 source /vagrant/scripts/cm-api.sh
+source /vagrant/scripts/cdh-parcels-functions.sh
+source /vagrant/scripts/nfs-functions.sh
 
 install_package "curl"
 
@@ -39,6 +41,13 @@ service cloudera-scm-server start
 
 # wait until server starts
 sleep 30
+
+if [[ $CM_USE_PARCELS = true ]]; then
+  if [[ $CM_PARCELS_NFS = true ]]; then
+    # setup NFS share for parcels
+    install_nfs_share_master "$CM_PARCELS_NFS_CLIENT_PATH" "cloudera-scm" "$CM_PARCELS_NFS_CLIENTS"
+  fi
+fi
 
 # Say Hello to make sure the manager is running
 echo_cloudera_manager

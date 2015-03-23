@@ -33,6 +33,7 @@ Vagrant.configure("2") do |config|
     master.vm.provision :shell, path: "scripts/hosts-file.sh"
     master.vm.provision :hostmanager
     master.vm.provision :shell, path: "scripts/cm-install.sh"
+    master.vm.provision :shell, path: "scripts/cdh-repo-config.sh"
     # install local parcel repo if specified in cm-api.sh
     master.vm.provision :shell, path: "scripts/cdh-local-parcels-repo.sh"
   end
@@ -53,7 +54,7 @@ Vagrant.configure("2") do |config|
     slave1.vm.provision :shell, path: "scripts/hosts-file.sh"
     slave1.vm.provision :shell, path: "scripts/host-extras.sh"
     slave1.vm.provision :hostmanager
-    slave1.vm.provision :shell, path: "scripts/cdh-yum-repo.sh"
+    slave1.vm.provision :shell, path: "scripts/cdh-repo-config.sh"
   end
 
   config.vm.define :slave2 do |slave2|
@@ -72,7 +73,7 @@ Vagrant.configure("2") do |config|
     slave2.vm.provision :shell, path: "scripts/hosts-file.sh"
     slave2.vm.provision :shell, path: "scripts/host-extras.sh"
     slave2.vm.provision :hostmanager
-    slave2.vm.provision :shell, path: "scripts/cdh-yum-repo.sh"
+    slave2.vm.provision :shell, path: "scripts/cdh-repo-config.sh"
   end
 
   config.vm.define :slave3 do |slave3|
@@ -91,7 +92,7 @@ Vagrant.configure("2") do |config|
     slave3.vm.provision :shell, path: "scripts/hosts-file.sh"
     slave3.vm.provision :shell, path: "scripts/host-extras.sh"
     slave3.vm.provision :hostmanager
-    slave3.vm.provision :shell, path: "scripts/cdh-yum-repo.sh"
+    slave3.vm.provision :shell, path: "scripts/cdh-repo-config.sh"
     # deploy hosts with cloudera manager agent (takes time to install..)
     slave3.vm.provision :shell, path: "scripts/cm-hosts.sh"
     # add hosts to mars-development cluster
