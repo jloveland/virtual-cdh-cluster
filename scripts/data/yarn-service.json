@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "name": "yarn",
+      "type": "YARN",
+      "config": {
+        "items": [
+          {
+            "name": "hdfs_service",
+            "value": "hdfs"
+          }
+        ]
+      }
+    }
+  ]
+}

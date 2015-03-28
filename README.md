@@ -9,7 +9,20 @@ Thanks to Cloudera who provides the Cloudera Manager and the RESTful web service
 ## Cluster Details
 
 ### Default Cluster
-The following *Default* cluster configuration is defined in the `Vagrantfile`. All VMs use a Centos 6.5 base box. This configuration requires at least 6GB of free RAM. You can remove slave nodes as needed, it will just be less performant.
+The following *Default* cluster configuration is defined in the `Vagrantfile`. All VMs use a Centos 6.5 base box. This configuration requires at least 10GB of free RAM. You can remove slave nodes as needed, it will just be less performant.
+
+* **Master node**
+  * 4GB of RAM
+  * Local Parcel Repo or Yum Repo
+  * Cloudera Manager
+  * Hue
+  * Provisioning NameNodes, HBase Master, Spark Master, ResourceManager
+* **3 Slave nodes**
+  * 2GB of RAM
+  * Provisioning Datanodes, Zookeeper, Region Servers, Node Manager
+
+### TODO: Large Cluster
+The following *Large* cluster configuration is defined in the `Vagrantfile`. All VMs use a Centos 6.5 base box. This configuration requires at least 12GB of free RAM. You can remove slave nodes as needed, it will just be less performant.
 
 * **Manager node**
   * 1GB of RAM
@@ -17,10 +30,10 @@ The following *Default* cluster configuration is defined in the `Vagrantfile`. A
   * Cloudera Manager
   * Hue
 * **Master node**
-  * 2GB of RAM,
+  * 5GB of RAM,
   * Provisioning NameNodes, HBase Master, Spark Master, ResourceManager
 * **3 Slave nodes**
-  * 1GB of RAM
+  * 2GB of RAM
   * Provisioning Datanodes, Zookeeper, Region Servers, Node Manager
 
 ### TODO: Docker Cluster

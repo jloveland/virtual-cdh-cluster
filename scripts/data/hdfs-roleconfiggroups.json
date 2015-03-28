@@ -1,0 +1,135 @@
+{
+  "items": [
+    {
+      "name": "hdfs-FAILOVERCONTROLLER-BASE",
+      "displayName": "Failover Controller Default Group",
+      "roleType": "FAILOVERCONTROLLER",
+      "config": {
+        "items": []
+      }
+    },
+    {
+      "name": "hdfs-BALANCER-BASE",
+      "displayName": "Balancer Default Group",
+      "roleType": "BALANCER",
+      "config": {
+        "items": [
+          {
+            "name": "balancer_java_heapsize",
+            "value": "116391936"
+          }
+        ]
+      }
+    },
+    {
+      "name": "hdfs-JOURNALNODE-BASE",
+      "displayName": "JournalNode Default Group",
+      "roleType": "JOURNALNODE",
+      "config": {
+        "items": []
+      }
+    },
+    {
+      "name": "hdfs-NFSGATEWAY-BASE",
+      "displayName": "NFS Gateway Default Group",
+      "roleType": "NFSGATEWAY",
+      "config": {
+        "items": [
+          {
+            "name": "nfsgateway_java_heapsize",
+            "value": "66060288"
+          }
+        ]
+      }
+    },
+    {
+      "name": "hdfs-DATANODE-BASE",
+      "displayName": "DataNode Default Group",
+      "roleType": "DATANODE",
+      "config": {
+        "items": [
+          {
+            "name": "datanode_java_heapsize",
+            "value": "128974848"
+          },
+          {
+            "name": "dfs_data_dir_list",
+            "value": "/data/dfs/dn"
+          },
+          {
+            "name": "dfs_datanode_du_reserved",
+            "value": "2113784627"
+          },
+          {
+            "name": "dfs_datanode_max_locked_memory",
+            "value": "324009984"
+          }
+        ]
+      }
+    },
+    {
+      "name": "hdfs-NAMENODE-BASE",
+      "displayName": "NameNode Default Group",
+      "roleType": "NAMENODE",
+      "config": {
+        "items": [
+          {
+            "name": "dfs_name_dir_list",
+            "value": "/data/dfs/nn"
+          },
+          {
+            "name": "dfs_namenode_servicerpc_address",
+            "value": "8022"
+          },
+          {
+            "name": "namenode_java_heapsize",
+            "value": "128974848"
+          }
+        ]
+      }
+    },
+    {
+      "name": "hdfs-GATEWAY-BASE",
+      "displayName": "Gateway Default Group",
+      "roleType": "GATEWAY",
+      "config": {
+        "items": [
+          {
+            "name": "dfs_client_use_trash",
+            "value": "true"
+          }
+        ]
+      }
+    },
+    {
+      "name": "hdfs-SECONDARYNAMENODE-BASE",
+      "displayName": "SecondaryNameNode Default Group",
+      "roleType": "SECONDARYNAMENODE",
+      "config": {
+        "items": [
+          {
+            "name": "fs_checkpoint_dir_list",
+            "value": "/data/dfs/snn"
+          },
+          {
+            "name": "secondary_namenode_java_heapsize",
+            "value": "128974848"
+          }
+        ]
+      }
+    },
+    {
+      "name": "hdfs-HTTPFS-BASE",
+      "displayName": "HttpFS Default Group",
+      "roleType": "HTTPFS",
+      "config": {
+        "items": [
+          {
+            "name": "httpfs_java_heapsize",
+            "value": "122683392"
+          }
+        ]
+      }
+    }
+  ]
+}

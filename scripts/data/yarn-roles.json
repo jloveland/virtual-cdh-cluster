@@ -1,0 +1,58 @@
+{
+  "items": [
+    {
+      "type": "NODEMANAGER",
+      "hostRef": {
+        "hostId": "nasa-orion-4"
+      },
+      "roleConfigGroupRef": {
+        "roleConfigGroupName": "yarn-NODEMANAGER-BASE"
+      }
+    },
+    {
+      "type": "NODEMANAGER",
+      "hostRef": {
+        "hostId": "nasa-orion-3"
+      },
+      "roleConfigGroupRef": {
+        "roleConfigGroupName": "yarn-NODEMANAGER-BASE"
+      }
+    },
+    {
+      "type": "NODEMANAGER",
+      "hostRef": {
+        "hostId": "nasa-orion-2"
+      },
+      "roleConfigGroupRef": {
+        "roleConfigGroupName": "yarn-NODEMANAGER-BASE"
+      }
+    },
+    {
+      "type": "RESOURCEMANAGER",
+      "hostRef": {
+        "hostId": "nasa-orion-1"
+      },
+      "roleConfigGroupRef": {
+        "roleConfigGroupName": "yarn-RESOURCEMANAGER-BASE"
+      }
+    },
+    {
+      "type": "JOBHISTORY",
+      "hostRef": {
+        "hostId": "nasa-orion-3"
+      },
+      "roleConfigGroupRef": {
+        "roleConfigGroupName": "yarn-JOBHISTORY-BASE"
+      }
+    },
+    {
+      "type": "GATEWAY",
+      "hostRef": {
+        "hostId": "nasa-orion-1"
+      },
+      "roleConfigGroupRef": {
+        "roleConfigGroupName": "yarn-GATEWAY-BASE"
+      }
+    }
+  ]
+}

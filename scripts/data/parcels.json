@@ -22,7 +22,7 @@
     },
     {
       "name": "REMOTE_PARCEL_REPO_URLS",
-      "value": "http://archive.cloudera.com/cdh5/parcels/latest/,http://archive.cloudera.com/impala/parcels/latest/,http://archive.cloudera.com/search/parcels/latest/,http://archive.cloudera.com/spark/parcels/latest/"
+      "value": "http://archive.cloudera.com/cdh5/parcels/latest/"
     },
     {
       "name": "RETAIN_PARCELS_IN_CACHE",
