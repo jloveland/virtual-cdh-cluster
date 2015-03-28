@@ -1,0 +1,76 @@
+{
+  "items": [
+    {
+      "type": "DATANODE",
+      "hostRef": {
+        "hostId": "nasa-orion-3"
+      },
+      "roleConfigGroupRef": {
+        "roleConfigGroupName": "hdfs-DATANODE-BASE"
+      }
+    },
+    {
+      "type": "DATANODE",
+      "hostRef": {
+        "hostId": "nasa-orion-2"
+      },
+      "roleConfigGroupRef": {
+        "roleConfigGroupName": "hdfs-DATANODE-BASE"
+      }
+    },
+    {
+      "type": "NFSGATEWAY",
+      "hostRef": {
+        "hostId": "nasa-orion-4"
+      },
+      "roleConfigGroupRef": {
+        "roleConfigGroupName": "hdfs-NFSGATEWAY-BASE"
+      }
+    },
+    {
+      "type": "SECONDARYNAMENODE",
+      "hostRef": {
+        "hostId": "nasa-orion-3"
+      },
+      "roleConfigGroupRef": {
+        "roleConfigGroupName": "hdfs-SECONDARYNAMENODE-BASE"
+      }
+    },
+    {
+      "type": "DATANODE",
+      "hostRef": {
+        "hostId": "nasa-orion-4"
+      },
+      "roleConfigGroupRef": {
+        "roleConfigGroupName": "hdfs-DATANODE-BASE"
+      }
+    },
+    {
+      "type": "HTTPFS",
+      "hostRef": {
+        "hostId": "nasa-orion-2"
+      },
+      "roleConfigGroupRef": {
+        "roleConfigGroupName": "hdfs-HTTPFS-BASE"
+      }
+    },
+    {
+      "type": "NAMENODE",
+      "hostRef": {
+        "hostId": "nasa-orion-2"
+      },
+      "roleConfigGroupRef": {
+        "roleConfigGroupName": "hdfs-NAMENODE-BASE"
+      }
+    },
+    {
+      "type": "BALANCER",
+      "hostRef": {
+        "hostId": "nasa-orion-4"
+      },
+      "roleConfigGroupRef": {
+        "roleConfigGroupName": "hdfs-BALANCER-BASE"
+      }
+    }
+  ]
+}

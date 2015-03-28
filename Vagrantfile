@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
   config.vm.define :master do |master|
     master.vm.provider :virtualbox do |v|
       v.name = "nasa-orion-1"
-      v.customize ["modifyvm", :id, "--memory", "2048"]
+      v.customize ["modifyvm", :id, "--memory", "4096"]
       unless File.exist?(master_disk2)
         v.customize ['createhd', '--filename', master_disk2, '--size', 20 * 1024]
       end
@@ -42,7 +42,7 @@ Vagrant.configure("2") do |config|
     slave1.vm.box = "centos65-x86_64-20140116"
     slave1.vm.provider :virtualbox do |v|
       v.name = "nasa-orion-2"
-      v.customize ["modifyvm", :id, "--memory", "1024"]
+      v.customize ["modifyvm", :id, "--memory", "2048"]
       unless File.exist?(slave1_disk2)
         v.customize ['createhd', '--filename', slave1_disk2, '--size', 20 * 1024]
       end
@@ -61,7 +61,7 @@ Vagrant.configure("2") do |config|
     slave2.vm.box = "centos65-x86_64-20140116"
     slave2.vm.provider :virtualbox do |v|
       v.name = "nasa-orion-3"
-      v.customize ["modifyvm", :id, "--memory", "1024"]
+      v.customize ["modifyvm", :id, "--memory", "2048"]
       unless File.exist?(slave2_disk2)
         v.customize ['createhd', '--filename', slave2_disk2, '--size', 20 * 1024]
       end
@@ -80,7 +80,7 @@ Vagrant.configure("2") do |config|
     slave3.vm.box = "centos65-x86_64-20140116"
     slave3.vm.provider :virtualbox do |v|
       v.name = "nasa-orion-4"
-      v.customize ["modifyvm", :id, "--memory", "1024"]
+      v.customize ["modifyvm", :id, "--memory", "2048"]
       unless File.exist?(slave3_disk2)
         v.customize ['createhd', '--filename', slave3_disk2, '--size', 20 * 1024]
       end
@@ -101,7 +101,9 @@ Vagrant.configure("2") do |config|
     slave3.vm.provision :shell, path: "scripts/cdh-parcels.sh"
     # provision cdh services
     slave3.vm.provision :shell, path: "scripts/cdh-zookeeper.sh"
-    # slave3.vm.provision :shell, path: "scripts/cm-cluster-firstrun.sh"
+    slave3.vm.provision :shell, path: "scripts/cdh-hdfs.sh"
+    slave3.vm.provision :shell, path: "scripts/cdh-yarn.sh"
+    slave3.vm.provision :shell, path: "scripts/cm-cluster-firstrun.sh"
   end
 
 end

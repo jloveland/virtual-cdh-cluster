@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "name": "resource_manager_java_heapsize",
+      "value": "52428800"
+    },
+    {
+      "name": "yarn_scheduler_maximum_allocation_mb",
+      "value": "1024"
+    },
+    {
+      "name": "yarn_scheduler_maximum_allocation_vcores",
+      "value": "1"
+    }
+  ]
+}

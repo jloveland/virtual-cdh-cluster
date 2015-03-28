@@ -56,5 +56,5 @@ if [[ $CM_ECHO = "\"Hello, World!\"" ]]; then
   data='{}'
   cm_api_post "/cm/trial/begin" $data
 else
-  echo "Cloudera manager not running, please wait for server to start and re-rpovision."
+  echo "Cloudera manager not running, please wait for server to start and re-povision."
 fi
