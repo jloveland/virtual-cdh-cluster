@@ -47,15 +47,17 @@ if [[ $CM_USE_PARCELS == false ]]; then
   echo " Installing zookeeper rpm packages..."
   # install zookeeper packages
   install_package "zookeeper-server"
-
 fi
 
 # check for cluster to be available
 cm_get_cluster_name
-if [[ $CM_CLUSTER_NAME = $CLUSTER_NAME ]]; then
+# check to see if cdh5 parcels have been activated
+parcel_product="CDH"
+get_parcel_status
+if [[ $CM_CLUSTER_NAME = $CLUSTER_NAME && $parcel_activated == true ]]; then
   echo "Adding Zookeeper Service to Cluster: $CLUSTER_NAME..."
   add_zk
   first_run_zk
 else
-  echo "Cluster not ready yet, please provision again."
+  echo "Cluster not ready yet or parcels not activated, please provision again."
 fi

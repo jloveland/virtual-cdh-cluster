@@ -101,9 +101,9 @@ Vagrant.configure("2") do |config|
     slave3.vm.provision :shell, path: "scripts/cdh-parcels.sh"
     # provision cdh services
     slave3.vm.provision :shell, path: "scripts/cdh-zookeeper.sh"
-    slave3.vm.provision :shell, path: "scripts/cdh-hdfs.sh"
-    slave3.vm.provision :shell, path: "scripts/cdh-yarn.sh"
-    slave3.vm.provision :shell, path: "scripts/cm-cluster-firstrun.sh"
+    # slave3.vm.provision :shell, path: "scripts/cdh-hdfs.sh"
+    # slave3.vm.provision :shell, path: "scripts/cdh-yarn.sh"
+    # slave3.vm.provision :shell, path: "scripts/cm-cluster-firstrun.sh"
   end
 
 end

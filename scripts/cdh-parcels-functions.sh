@@ -19,3 +19,20 @@ update_parcels_config () {
   cm_api_put "/cm/config" $data
   # TODO: check if we need to set a proxy
 }
+
+get_parcel_status () {
+  # get the list of parcels
+  get_parcels_array
+  parcel_activated=false
+
+  for p in "${!parcelsarray[@]}"
+  do
+    product=$(echo ${parcelsarray[$p]} | jq -r '.product')
+    version=$(echo ${parcelsarray[$p]} | jq -r '.version')
+    stage=$(echo ${parcelsarray[$p]} | jq -r '.stage')
+
+    if [[ $stage == "ACTIVATED" && $product == $parcel_product ]]; then
+      parcel_activated=true
+    fi
+  done
+}
